@@ -231,7 +231,7 @@ class TimeSeriesDataSet(Dataset):
                 ``time_idx`` and the ``group_ids``
             time_idx (str): integer column denoting the time index. This columns is used to determine
                 the sequence of samples.
-                If there no missings observations, the time index should increase by ``+1`` for each subsequent sample.
+                If there no missing observations, the time index should increase by ``+1`` for each subsequent sample.
                 The first time_idx for each series does not necessarily have to be ``0`` but any value is allowed.
             target (Union[str, List[str]]): column denoting the target or list of columns denoting the target -
                 categorical or continous.

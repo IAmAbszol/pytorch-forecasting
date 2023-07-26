@@ -629,6 +629,8 @@ class TemporalFusionTransformer(BaseModelWithCovariates):
         attention[attention < 1e-5] = float("nan")
 
         # histogram of decode and encode lengths
+        assert out["encoder_lengths"].max() <= self.hparams.max_encoder_length, \
+            f"Max encoder length ({self.hparams.max_encoder_length}) is less than the maximum value in 'encoder_lengths' ({out['encoder_lengths'].max()}). Please increase 'max_encoder_length'."
         encoder_length_histogram = integer_histogram(out["encoder_lengths"], min=0, max=self.hparams.max_encoder_length)
         decoder_length_histogram = integer_histogram(
             out["decoder_lengths"], min=1, max=out["decoder_variables"].size(1)
